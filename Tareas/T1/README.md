@@ -45,9 +45,9 @@ La salida de `salida.txt` presenta **ráfagas alternas** de ambos procesos, aqui
 
 | |
 |---|
-| <img src="https://github.com/user-attachments/assets/7e6bb13b-e8d5-41f5-a168-83a3a7a34f75" alt="Ejemplo 1" width="800"/> |
-| <img src="https://github.com/user-attachments/assets/8e73fd37-2855-4138-b379-f3c14f2b7b4b" alt="Ejemplo 2" width="800"/> | 
-| <img src="https://github.com/user-attachments/assets/f9a4293f-213e-4389-a67f-d7cd1b2f16f7" alt="Ejemplo 3" width="800"/> | 
+| <img src="https://github.com/user-attachments/assets/7e6bb13b-e8d5-41f5-a168-83a3a7a34f75" alt="Ejemplo 1" width="400"/> |
+| <img src="https://github.com/user-attachments/assets/8e73fd37-2855-4138-b379-f3c14f2b7b4b" alt="Ejemplo 2" width="300"/> | 
+| <img src="https://github.com/user-attachments/assets/f9a4293f-213e-4389-a67f-d7cd1b2f16f7" alt="Ejemplo 3" width="400"/> | 
 
 </details>
 
