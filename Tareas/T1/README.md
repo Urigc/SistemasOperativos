@@ -39,15 +39,16 @@ El código completo está en esta misma parte del repositorio, en el archivo: `p
 
 La salida de `salida.txt` presenta **ráfagas alternas** de ambos procesos, aqui miestro unos ejemplos de la salida donde se ve el fenómeno:
 
-```
-PADRE: 1
-PADRE: 2
-HIJO: 1
-HIJO: 2
-HIJO: 3
-PADRE: 3
-...
-```
+<details>
+<summary> Ver capturas de pantalla</summary>
+## Capturas de pantalla
+
+| |
+|---|
+| <img src="" alt="Login" width="800"/> |
+| <img src="" alt="Panel Director" width="800"/> | 
+
+</details>
 
 No se observa un patrón fijo (`1,1,2,2,...`). Esto se debe a que, tras el `fork()`, ambos procesos compiten por la CPU y el planificador les asigna "rodajas de tiempo". 
 Al agotarse la rodaja o al bloquearse por E/S, el núcleo realiza un **cambio de contexto** y cede la CPU al otro proceso. El orden exacto depende de la carga del sistema, las prioridades dinámicas y la frecuencia del reloj, por lo que el resultado varia.
