@@ -12,32 +12,33 @@
 > 
 > **Grupo:** 4CM1
 > 
-> **Fecha de entrega:** 06 de Octubre de 2026
+> **Fecha de entrega:** 20 de Octubre de 2026
 ---
 
 ## Descripción
 
-Programa en C que crea un proceso hijo mediante `fork()` y hace que ambos procesos impriman la misma secuencia numérica (Para nuestro caso el esquema del 1 al 10000, aunque editable en número max) sobre un archivo de texto. El propósito es evidenciar cómo el planificador del sistema operativo alterna la CPU entre ambos procesos, produciendo una **intercalación no determinista** en la salida.
+Esta práctica es la evolución de la Tarea 1 (basada en procesos con fork()). El objetivo sigue siendo el mismo, dos flujos de ejecución independientes imprimen de forma concurrente la misma secuencia numérica (del 1 al 10,000) en un archivo de texto (salida_hilos.txt), con el fin de observar el intercalado producido por el planificador.
 
-## Base del código
+La diferencia fundamental es que ahora la concurrencia se implementa mediante Hilos POSIX (pthread), migrando de una arquitectura de procesos pesados a un modelo multihilo ligero.
 
-El codeado de referencia lo he tomado del libro:
+## Funcionamiento del Código
 
-> Márquez García, Francisco Manuel. *UNIX Programación Avanzada*, 3ª ed. Ra-Ma, 2014. Cap. 6, § 6.2, Programa 6.2 (`fork.c`, pág. 188).
+El código (hilos_1.c) está estructurado bajo los estándares de la biblioteca pthread, que he decidido resumir en los siguientes puntos:
 
-Ese ejemplo original bifurca el flujo con `fork()` y hace que padre e hijo impriman mensajes concurrentes, lo cual es la base conceptual retomada aquí.
+- Apertura del archivo compartido: Antes de crear los hilos, el hilo principal abre el archivo con open() utilizando la bandera O_APPEND. Al crear los hilos, estos heredan y comparten este descriptor.
 
-## Adaptaciones aplicadas
+- Creación de hilos (pthread_create): Se instancian dos hilos (hilo1 y hilo2). A cada uno se le pasa como argumento un identificador en texto ("HILO 1" y "HILO 2") para distinguir sus escrituras.
 
-- Ambos procesos imprimen la **misma secuencia** (`1..N`), lo que hace visible la intercalación como ruptura de una misma serie.
-- El archivo `salida.txt` se abre **antes del `fork()`**, de modo que padre e hijo comparten descriptor y offset.
-- Se activa `O_APPEND` para que cada escritura se realice atómicamente al final, sin sobrescrituras.
-  
-El código completo está en esta misma parte del repositorio, en el archivo: `padre_hijo10000.c`.
+- Ejecución concurrente: Ambos hilos ejecutan la función imprimir_numeros(). Para evitar que el buffering de la librería estándar oculte el intercalado real, se utiliza la función dprintf() (que llama directamente a la llamada al sistema write()). Así, cada número se escribe de manera atómica e inmediata en el archivo.
+
+- Sincronización (pthread_join): El hilo principal (el main) se bloquea a la espera de que ambos hilos terminen su ciclo utilizando pthread_join. Finalmente, cierra el archivo y termina.
 
 ## Comportamiento observado
 
-La salida de `salida.txt` presenta **ráfagas alternas** de ambos procesos, aqui miestro unos ejemplos de la salida donde se ve el fenómeno:
+Al inspeccionar el archivo salida_hilos.txt, se evidencia un intercalado no determinista (ráfagas de números de un hilo seguidas de ráfagas del otro).
+
+Esto sucede porque, al ser hilos de un mismo proceso, comparten el espacio de memoria, pero compiten por el tiempo de CPU. 
+El planificador del sistema operativo asigna time slices (rodajas de tiempo) a cada hilo, cuando la rodaja termina o el hilo se bloquea (por ejemplo, esperando escribir en el archivo), el planificador hace un cambio de contexto y le cede el turno al otro hilo. Dado que el orden exacto depende de la carga del sistema y del hardware, el resultado final nunca es perfectamente alternado, demostrando la naturaleza asíncrona de los hilos.
 
 <details>
 <summary> Ver capturas de pantalla</summary>
@@ -49,15 +50,10 @@ Capturas de pantalla
 
 </details>
 
-No se observa un patrón fijo (`1,1,2,2,...`). Esto se debe a que, tras el `fork()`, ambos procesos compiten por la CPU y el planificador les asigna "rodajas de tiempo". 
-Al agotarse la rodaja o al bloquearse por E/S, el núcleo realiza un **cambio de contexto** y cede la CPU al otro proceso. El orden exacto depende de la carga del sistema, las prioridades dinámicas y la frecuencia del reloj, por lo que el resultado varia.
-
-Para cerrar, la tarea confirma que `fork()` duplica el flujo de ejecución y que, a partir de ahí, ambos procesos son entidades independientes gestionadas por el planificador. La intercalación observada es la evidencia directa de la conmutación de contexto, y demuestra que en programación concurrente no se puede asumir un orden de ejecución especial sin mecanismos explícitos de sincronización.
-
 ## Archivos
 
 | Archivo | Descripción |
 |---|---|
-| `padre_hijo10000.c` | Código fuente. |
-| `salida.txt` | Evidencia generada tras la ejecución. |
+| `hilos.c` | Código fuente. |
+| `salida_hilos.txt` | Evidencia generada tras la ejecución. |
 | `README.md` | Este documento. |
