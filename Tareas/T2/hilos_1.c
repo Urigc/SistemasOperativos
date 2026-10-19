@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#define MAX 1000000
+#define MAX 10000
 #define ARCHIVO "salida_hilos.txt"
 
 int fd;
