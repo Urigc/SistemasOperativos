@@ -1,4 +1,4 @@
-# Procesos padre e hijo con `fork()` en C
+# Programación con Hilos POSIX (pthreads)
 
 ---
 > **Institución:** INSTITUTO POLITÉCNICO NACIONAL
