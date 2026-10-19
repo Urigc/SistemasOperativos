@@ -46,7 +46,7 @@ Capturas de pantalla
 
 | | | |
 |---|---|---|
-| <img src="https://github.com/user-attachments/assets/7e6bb13b-e8d5-41f5-a168-83a3a7a34f75" alt="Ejemplo 1" width="250"/> | <img src="https://github.com/user-attachments/assets/8e73fd37-2855-4138-b379-f3c14f2b7b4b" alt="Ejemplo 2" width="250"/> |  <img src="https://github.com/user-attachments/assets/f9a4293f-213e-4389-a67f-d7cd1b2f16f7" alt="Ejemplo 3" width="250"/> | 
+| <img src="https://github.com/user-attachments/assets/627d72de-a659-4698-ae7c-21572330bb04" alt="Ejemplo 1" width="250"/> | <img src="https://github.com/user-attachments/assets/d44fc2ea-bcec-4a57-8ce3-a24ee937b6b3" alt="Ejemplo 2" width="250"/> |  <img src="https://github.com/user-attachments/assets/32074804-0dff-4391-8467-0b1f350056f2" alt="Ejemplo 3" width="250"/> | 
 
 </details>
 
