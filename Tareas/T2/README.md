@@ -15,6 +15,36 @@
 > **Fecha de entrega:** 20 de Octubre de 2026
 ---
 
+## EJERCICIO 1
+
+## Descripción del Ejercicio
+
+El programa demuestra la concurrencia entre un proceso principal y un hilo creado por este. Usando la biblioteca `pthread`, el flujo principal imprime una cuenta ascendente del **1 al 10,000**, mientras que el hilo secundario ejecuta simultáneamente una cuenta regresiva del **10,000 al 1**. 
+Toda la salida se redirige a un archivo de texto (`salida_proceso_hilo.txt`) para evidenciar el intercalado temporal.
+
+## Funcionamiento del Código
+
+1. **Archivo compartido:** Se abre un descriptor de archivo con `open()` en el proceso principal antes de invocar a `pthread_create`. Debido a que los hilos comparten el mismo espacio de memoria, el nuevo hilo hereda este descriptor.
+2. **Creación del hilo:** Se usa `pthread_create` para lanzar el hilo que ejecutará la función `imprimir_regresivo()`.
+3. **Concurrencia real:** Mientras el hilo hace su cuenta regresiva, el proceso principal (hilo `main`) no se detiene; continúa con su bucle ascendente. Ambos compiten por el tiempo de CPU.
+4. **Sincronización:** Se utiliza `pthread_join` para que el proceso principal espere obligatoriamente a que el hilo regresivo termine antes de cerrar el archivo y finalizar el programa.
+
+## Comportamiento Observado
+
+Dado que ambos flujos de ejecución (el proceso principal y el hilo) comparten el mismo espacio de direcciones pero compiten por los ciclos de CPU, el planificador del sistema operativo les asigna rodajas de tiempo (*time slices*).
+
+Al revisar el archivo, se observará un **intercalado desordenado** de las dos secuencias. No veremos un bloque perfecto del 1 al 10,000 seguido del 10,000 al 1, ni una alternancia perfecta (ej. 1, 10000, 2, 9999). El orden dependerá de en qué momento exacto el sistema operativo haga el cambio de contexto, demostrando que los hilos se ejecutan de forma concurrente y asíncrona.
+
+## Archivos
+
+| Archivo | Descripción |
+|---|---|
+| `procesoehilo.c` | Código fuente. |
+| `salida_proceso_hilo.txt` | Evidencia generada tras la ejecución. |
+| `README.md` | Este documento. |
+
+## EJERCICIO 2
+
 ## Descripción
 
 Esta práctica es la evolución de la Tarea 1 (basada en procesos con fork()). El objetivo sigue siendo el mismo, dos flujos de ejecución independientes imprimen de forma concurrente la misma secuencia numérica (del 1 al 10,000) en un archivo de texto (salida_hilos.txt), con el fin de observar el intercalado producido por el planificador.
@@ -25,13 +55,13 @@ La diferencia fundamental es que ahora la concurrencia se implementa mediante Hi
 
 El código (hilos_1.c) está estructurado bajo los estándares de la biblioteca pthread, que he decidido resumir en los siguientes puntos:
 
-- Apertura del archivo compartido: Antes de crear los hilos, el hilo principal abre el archivo con open() utilizando la bandera O_APPEND. Al crear los hilos, estos heredan y comparten este descriptor.
+- **Apertura del archivo compartido:** Antes de crear los hilos, el hilo principal abre el archivo con open() utilizando la bandera O_APPEND. Al crear los hilos, estos heredan y comparten este descriptor.
 
-- Creación de hilos (pthread_create): Se instancian dos hilos (hilo1 y hilo2). A cada uno se le pasa como argumento un identificador en texto ("HILO 1" y "HILO 2") para distinguir sus escrituras.
+- **Creación de hilos (pthread_create):** Se instancian dos hilos (hilo1 y hilo2). A cada uno se le pasa como argumento un identificador en texto ("HILO 1" y "HILO 2") para distinguir sus escrituras.
 
-- Ejecución concurrente: Ambos hilos ejecutan la función imprimir_numeros(). Para evitar que el buffering de la librería estándar oculte el intercalado real, se utiliza la función dprintf() (que llama directamente a la llamada al sistema write()). Así, cada número se escribe de manera atómica e inmediata en el archivo.
+- **Ejecución concurrente:** Ambos hilos ejecutan la función imprimir_numeros(). Para evitar que el buffering de la librería estándar oculte el intercalado real, se utiliza la función dprintf() (que llama directamente a la llamada al sistema write()). Así, cada número se escribe de manera atómica e inmediata en el archivo.
 
-- Sincronización (pthread_join): El hilo principal (el main) se bloquea a la espera de que ambos hilos terminen su ciclo utilizando pthread_join. Finalmente, cierra el archivo y termina.
+- **Sincronización (pthread_join):** El hilo principal (el main) se bloquea a la espera de que ambos hilos terminen su ciclo utilizando pthread_join. Finalmente, cierra el archivo y termina.
 
 ## Comportamiento observado
 
@@ -54,6 +84,6 @@ Capturas de pantalla
 
 | Archivo | Descripción |
 |---|---|
-| `hilos.c` | Código fuente. |
+| `hilos_1.c` | Código fuente. |
 | `salida_hilos.txt` | Evidencia generada tras la ejecución. |
 | `README.md` | Este documento. |
