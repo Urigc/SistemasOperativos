@@ -125,19 +125,3 @@ Gracias a la modificación del formato, el archivo `salida_semaforos.txt` demues
 2.  **Al llegar al 4000:** Verás un cartel que dice `>>> ENTRANDO A SECCIÓN CRÍTICA: Hilo X`. A partir de ese instante, **todos los números serán de un solo hilo**, sin interrupción, demostrando que el semáforo bloqueó al otro.
 3.  **Al llegar al 8000:** Verás el cartel `<<< SALIENDO DE SECCIÓN CRÍTICA: Hilo X`. Inmediatamente después, el otro hilo tomará el control (o continuará si ya estaba esperando) e imprimirá su propio bloque del 4000 al 8000.
 4.  **Del 8001 al 10000:** El semáforo se libera y los números vuelven a intercalarse.
-
-## Compilación y Ejecución
-
-Para compilar el programa, es obligatorio enlazar la biblioteca de hilos y semáforos con el flag `-pthread`:
-
-```bash
-gcc -o tarea4_posix tarea4_posix.c -pthread
-./tarea4_posix
-```
-
-Para inspeccionar la zona de conflicto (la sección crítica) en el archivo generado, puedes ejecutar:
-
-```bash
-grep -n "SECCIÓN CRÍTICA" salida_semaforos.txt
-```
-*(Este comando te mostrará exactamente en qué líneas se aplicó el candado y se demostró la exclusión mutua).*
