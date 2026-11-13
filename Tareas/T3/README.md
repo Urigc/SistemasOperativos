@@ -1,17 +1,20 @@
 # Tarea 4: Sincronización de Hilos con Semáforos POSIX
 
-## Informac
+---
+> **Institución:** INSTITUTO POLITÉCNICO NACIONAL
 
-| Campo | Dato |
-| :--- | :--- |
-| **Institución** |  |
-| **Materia** | Sistemas Operativos |
-| **Tema** | Concurrencia y Sincronización — Semáforos POSIX |
-| **Alumno** | Uriel Gonzalez Casiano |
-| **No. de Boleta** | 2025360558 |
-| **Profesor** |  |
-| **Grupo / Semestre** | |
-| **Fecha** | |
+> **Unidad:** Escuela Superior de Cómputo  
+> **Materia:** Sistemas Operativos
+>
+> | **Tema** | Concurrencia y Sincronización — Semáforos POSIX |
+> 
+> **Alumno:** Uriel González Casiano
+> 
+> **Profesor:** Rolando Quintero Téllez
+> 
+> **Grupo:** 4CM1
+> 
+> **Fecha de entrega:** 18 de Noviembre de 2026
 
 ---
 
