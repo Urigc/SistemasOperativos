@@ -13,7 +13,6 @@
 > 
 > **Fecha de entrega:** 18 de Noviembre de 2026
 
----
 
 ## Descripción General
 
@@ -28,7 +27,6 @@ A diferencia de las soluciones básicas (como la asimétrica), este programa imp
 *   `<fcntl.h>` y `<unistd.h>`: Utilizadas para abrir el archivo de evidencia y permitir pausas en el procesador (`usleep`) que simulan el tiempo de pensar y comer.
 *   `<stdio.h>` y `<stdlib.h>`: Para la impresión de mensajes y control de flujo.
 
----
 
 ## Conceptos Aplicados
 
@@ -39,7 +37,6 @@ La riqueza de este problema radica en que pone a prueba los tres pilares de la p
 3.  **Prevención de Interbloqueo (Deadlock):** El interbloqueo ocurre si los 5 filósofos toman su tenedor izquierdo al mismo tiempo. Todos se quedan esperando el tenedor derecho que ya nadie soltará. Al usar el arreglo de estados, se rompe la espera circular: el filósofo solo "toma" los tenedores lógicamente si verifica que puede comer.
 4.  **Prevención de Inanición (Starvation):** Garantiza que ningún filósofo se quede esperando eternamente. En el momento en que sus vecinos terminan de comer, la función `test()` se ejecuta y le cede el turno automáticamente.
 
----
 
 ## Análisis de la Solución Implementada
 
@@ -47,7 +44,6 @@ El material teórico propone dos soluciones:
 1.  **Solución Asimétrica:** Hacer que el último filósofo tome primero el tenedor derecho. Es fácil de programar, pero ineficiente e injusta (sigue habiendo colisiones).
 2.  **Solución de Estados (Implementada):** Es la solución óptima. Los tenedores físicos desaparecen como variables y se convierten en "estados". Al verificar si un filósofo puede comer revisando si `state[izquierda] != EATING` y `state[derecha] != EATING`, se maximiza el paralelismo (mientras el filósofo 1 come, el filósofo 3 puede comer sin problemas).
 
----
 
 ## Explicación del Código
 
@@ -97,7 +93,6 @@ void put_forks(int i) {
 *   Cada hilo ejecuta un bucle de 3 comidas (`MEALS = 3`). Piensa (`usleep`), llama a `take_forks`, come (`usleep`) y llama a `put_forks`. Al terminar sus 3 comidas, el hilo hace `pthread_exit`.
 *   El `main` inicializa los semáforos (`mutex` en 1 y los `s[i]` en 0), crea los hilos y hace `pthread_join` para esperar a que todos terminen de cenar antes de cerrar el archivo y destruir los semáforos.
 
----
 
 ## Evidencia y Análisis de la Salida (`salida_filosofos.txt`)
 
