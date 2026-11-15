@@ -1,23 +1,23 @@
 # Múltiples Productores y Consumidores con Hilos POSIX
 
-## Portada
+> **Institución:** INSTITUTO POLITÉCNICO NACIONAL
 
-| Campo | Dato |
-| :--- | :--- |
-| **Institución** | _[Nombre de la institución]_ |
-| **Materia** | Sistemas Operativos |
-| **Tema** | Concurrencia y Sincronización — Buffer Acotado (Productor-Consumidor) |
-| **Alumno** | _[Nombre completo]_ |
-| **Matrícula** | _[Matrícula]_ |
-| **Profesor** | _[Nombre del profesor]_ |
-| **Grupo / Semestre** | _[Grupo]_ |
-| **Fecha** | _[DD/MM/AAAA]_ |
+> **Unidad:** Escuela Superior de Cómputo  
+> **Materia:** Sistemas Operativos
+> 
+> **Alumno:** Uriel González Casiano
+> 
+> **Profesor:** Rolando Quintero Téllez
+> 
+> **Grupo:** 4CM1
+> 
+> **Fecha de entrega:** 18 de Noviembre de 2026
 
 ---
 
 ## Descripción General
 
-Este proyecto implementa la generalización del clásico problema de **Productores-Consumidores** sobre un **Buffer Acotado (Bounded Buffer)**, migrando de un esquema básico 1:1 a un modelo M:N. En esta práctica, el programa instancia **dos hilos productores y dos hilos consumidores** que interactúan concurrentemente sobre un buffer circular de tamaño limitado (`N = 5`).
+En esta tarea se implementa la generalización del clásico problema de **Productores-Consumidores** sobre un **Buffer Acotado (Bounded Buffer)**, migrando de un esquema básico 1:1 a un modelo M:N. En esta práctica, el programa instancia **dos hilos productores y dos hilos consumidores** que interactúan concurrentemente sobre un buffer circular de tamaño limitado (`N = 5`).
 
 Para garantizar la integridad de los datos y evitar condiciones de carrera, se utilizan **semáforos POSIX contadores** (para el control de capacidad) y **semáforos binarios/mutex** (para la exclusión mutua). El programa tiene una condición de término programada: cada productor genera 100 productos (200 en total), por lo que el programa finaliza limpiamente cuando los consumidores han extraído los 200 elementos, dejando una evidencia detallada en un archivo de texto.
 
@@ -41,7 +41,7 @@ Para garantizar la integridad de los datos y evitar condiciones de carrera, se u
 
 ---
 
-## Explicación del Código (Externa)
+## Explicación del Código 
 
 El código se divide en tres bloques lógicos principales:
 
