@@ -17,7 +17,7 @@
 
 ## Descripción General
 
-Este proyecto implementa una solución concurrente al clásico problema de **La Cena de los Filósofos**, planteado originalmente por Edsger Dijkstra en 1965. El escenario consta de 5 filósofos sentados en una mesa circular, con 5 tenedores intercalados entre ellos. Para poder comer, un filósofo necesita **dos tenedores** (el de su izquierda y el de su derecha). El reto computacional radica en coordinar el acceso a estos recursos compartidos sin caer en **interbloqueos (deadlocks)** ni en **inanición (starvation)**.
+Esta tarea implementa una solución concurrente al clásico problema de **La Cena de los Filósofos**, planteado originalmente por Edsger Dijkstra en 1965. El escenario consta de 5 filósofos sentados en una mesa circular, con 5 tenedores intercalados entre ellos. Para poder comer, un filósofo necesita **dos tenedores** (el de su izquierda y el de su derecha). El reto computacional radica en coordinar el acceso a estos recursos compartidos sin caer en **interbloqueos (deadlocks)** ni en **inanición (starvation)**.
 
 A diferencia de las soluciones básicas (como la asimétrica), este programa implementa la **Solución de Estados (Máximo Paralelismo)**, que es matemáticamente la más óptima. En lugar de bloquear físicamente los tenedores, el sistema rastrea el estado (`THINKING`, `HUNGRY`, `EATING`) de cada filósofo y les permite comer solo si sus vecinos inmediatos no están comiendo, garantizando que hasta dos filósofos puedan comer simultáneamente sin conflictos.
 
@@ -49,9 +49,9 @@ El material teórico propone dos soluciones:
 
 ---
 
-## Explicación del Código (Externa)
+## Explicación del Código
 
-El código se divide en tres bloques lógicos que respetan el pseudocódigo proporcionado en las diapositivas:
+El código se divide en tres bloques lógicos:
 
 ### 1. Funciones de Control y Estado
 ```c
@@ -103,6 +103,6 @@ void put_forks(int i) {
 
 El archivo de texto registrará cada cambio de estado. Al analizarlo, se pueden comprobar las propiedades del algoritmo:
 
-1.  **Exclusión Vecinal:** Si ves el mensaje `Filosofo 0 comienza a comer (Tenedores 4 y 0)`, los siguientes mensajes de los filósofos `1` y `4` no podrán ser "comienza a comer", estarán obligados a ser "tiene hambre" (esperando).
-2.  **Máximo Paralelismo:** Mientras el filósofo 0 come, verás que el filósofo 2 o el 3 pueden empezar a comer al mismo tiempo, ya que no comparten tenedores directos con el 0.
-3.  **Flujo Continuo (Sin Deadlock):** El archivo mostrará que todos los filósofos progresan. Cada vez que uno termina de comer (`termina de comer y vuelve a pensar`), inmediatamente después se verá cómo un vecino que tenía hambre pasa a comer. El sistema nunca se congela.
+1.  **Exclusión Vecinal:** Si observa el mensaje `Filosofo 0 comienza a comer (Tenedores 4 y 0)`, los siguientes mensajes de los filósofos `1` y `4` no podrán ser "comienza a comer", estarán obligados a ser "tiene hambre" (esperando).
+2.  **Máximo Paralelismo:** Mientras el filósofo 0 come, verá que el filósofo 2 o el 3 pueden empezar a comer al mismo tiempo, ya que no comparten tenedores directos con el 0.
+3.  **Flujo Continuo (Sin Deadlock):** El archivo mostrará que todos los filósofos progresan. Cada vez que uno termina de comer (`termina de comer y vuelve a pensar`), inmediatamente después verá cómo un vecino que tenía hambre pasa a comer. El sistema nunca se congela.
