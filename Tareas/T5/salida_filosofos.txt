@@ -1,0 +1,60 @@
+Filosofo 0 esta pensando.
+Filosofo 1 esta pensando.
+Filosofo 2 esta pensando.
+Filosofo 3 esta pensando.
+Filosofo 4 esta pensando.
+Filosofo 0 tiene hambre.
+Filosofo 0 comienza a comer (Tenedores 4 y 0).
+Filosofo 1 tiene hambre.
+Filosofo 2 tiene hambre.
+Filosofo 2 comienza a comer (Tenedores 1 y 2).
+Filosofo 3 tiene hambre.
+Filosofo 4 tiene hambre.
+Filosofo 0 termina de comer y vuelve a pensar.
+Filosofo 4 comienza a comer (Tenedores 3 y 4).
+Filosofo 0 esta pensando.
+Filosofo 2 termina de comer y vuelve a pensar.
+Filosofo 1 comienza a comer (Tenedores 0 y 1).
+Filosofo 2 esta pensando.
+Filosofo 0 tiene hambre.
+Filosofo 4 termina de comer y vuelve a pensar.
+Filosofo 3 comienza a comer (Tenedores 2 y 3).
+Filosofo 4 esta pensando.
+Filosofo 2 tiene hambre.
+Filosofo 1 termina de comer y vuelve a pensar.
+Filosofo 0 comienza a comer (Tenedores 4 y 0).
+Filosofo 1 esta pensando.
+Filosofo 4 tiene hambre.
+Filosofo 3 termina de comer y vuelve a pensar.
+Filosofo 2 comienza a comer (Tenedores 1 y 2).
+Filosofo 3 esta pensando.
+Filosofo 1 tiene hambre.
+Filosofo 0 termina de comer y vuelve a pensar.
+Filosofo 4 comienza a comer (Tenedores 3 y 4).
+Filosofo 0 esta pensando.
+Filosofo 3 tiene hambre.
+Filosofo 2 termina de comer y vuelve a pensar.
+Filosofo 1 comienza a comer (Tenedores 0 y 1).
+Filosofo 2 esta pensando.
+Filosofo 0 tiene hambre.
+Filosofo 4 termina de comer y vuelve a pensar.
+Filosofo 3 comienza a comer (Tenedores 2 y 3).
+Filosofo 4 esta pensando.
+Filosofo 2 tiene hambre.
+Filosofo 1 termina de comer y vuelve a pensar.
+Filosofo 0 comienza a comer (Tenedores 4 y 0).
+Filosofo 1 esta pensando.
+Filosofo 4 tiene hambre.
+Filosofo 3 termina de comer y vuelve a pensar.
+Filosofo 2 comienza a comer (Tenedores 1 y 2).
+Filosofo 3 esta pensando.
+Filosofo 1 tiene hambre.
+Filosofo 0 termina de comer y vuelve a pensar.
+Filosofo 4 comienza a comer (Tenedores 3 y 4).
+Filosofo 3 tiene hambre.
+Filosofo 2 termina de comer y vuelve a pensar.
+Filosofo 1 comienza a comer (Tenedores 0 y 1).
+Filosofo 4 termina de comer y vuelve a pensar.
+Filosofo 3 comienza a comer (Tenedores 2 y 3).
+Filosofo 1 termina de comer y vuelve a pensar.
+Filosofo 3 termina de comer y vuelve a pensar.
