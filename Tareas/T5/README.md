@@ -1,17 +1,17 @@
 # Tarea 6: La Cena de los Filósofos con Hilos POSIX
 
-## Portada
+> **Institución:** INSTITUTO POLITÉCNICO NACIONAL
 
-| Campo | Dato |
-| :--- | :--- |
-| **Institución** | _[Nombre de la institución]_ |
-| **Materia** | Sistemas Operativos |
-| **Tema** | Concurrencia y Sincronización — Interbloqueo (Deadlock) |
-| **Alumno** | _[Nombre completo]_ |
-| **Matrícula** | _[Matrícula]_ |
-| **Profesor** | _[Nombre del profesor]_ |
-| **Grupo / Semestre** | _[Grupo]_ |
-| **Fecha** | _[DD/MM/AAAA]_ |
+> **Unidad:** Escuela Superior de Cómputo  
+> **Materia:** Sistemas Operativos
+> 
+> **Alumno:** Uriel González Casiano
+> 
+> **Profesor:** Rolando Quintero Téllez
+> 
+> **Grupo:** 4CM1
+> 
+> **Fecha de entrega:** 18 de Noviembre de 2026
 
 ---
 
